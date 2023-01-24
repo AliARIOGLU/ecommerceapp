@@ -15,6 +15,8 @@ const Navbar = () => {
 
   const products = useSelector((state) => state.cart.products);
 
+  console.log(products);
+
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -75,7 +77,9 @@ const Navbar = () => {
             <FavoriteBorderOutlinedIcon />
             <div className="cartIcon" onClick={() => setOpen(!open)}>
               <ShoppingCartOutlinedIcon />
-              <span>{products.length}</span>
+              <span>
+                {products.reduce((acc, prod) => (acc += prod.quantity), 0)}
+              </span>
             </div>
           </div>
         </div>
